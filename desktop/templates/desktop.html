@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Рабочий стол</title>
+    <link rel="stylesheet" href="{% static 'desktop.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<body>
+    <main>
+        <div class="desktop-background"></div>
+        <div class="all-icon">
+            <a class="icon" href="{% url 'policeServices:main' %}">
+                <div class="icon-content">
+                    <div class="icon-icon">
+                        <img src="{% static 'planet.svg' %}" width="80">
+                    </div>
+                    <p class="icon-title">База данных</p>
+                </div>
+            </a>
+            <a class="icon" href="{% url 'university:main' %}">
+                <div class="icon-content">
+                    <div class="icon-icon">
+                        <img src="{% static 'uni.svg' %}" width="65">
+                    </div>
+                    <p class="icon-title">Портал университета</p>
+                </div>
+            </a>
+            <a class="icon" target="_blank" href="https://music.yandex.ru/album/25999582/track/114152584">
+                <div class="icon-content">
+                    <div class="icon-icon">
+                        <img src="{% static 'music.svg' %}" width="80">
+                    </div>
+                    <p class="icon-title">Музыка</p>
+                </div>
+            </a>
+            <a class="icon">
+                <div class="icon-content">
+                    <div class="icon-icon">
+                        <img src="{% static 'notes.svg' %}" width="80">
+                    </div>
+                    <p class="icon-title">Заметки</p>
+                </div>
+            </a>
+            <a class="icon">
+                <div class="icon-content">
+                    <div class="icon-icon">
+                        <img src="{% static 'ad.svg' %}" width="80">
+                    </div>
+                    <p class="icon-title">Реклама</p>
+                </div>
+            </a>
+            <a class="icon" target="_blank" href="https://vk.com/">
+                <div class="icon-content">
+                    <div class="icon-icon">
+                        <img src="{% static 'vk.svg' %}" width="70">
+                    </div>
+                    <p class="icon-title">Мы в ВК</p>
+                </div>
+            </a>
+        </div>
+    </main>
+    <footer>
+        <div><a class="log-out" href="/logout/">выход</a></div>
+        <div id="clock"></div>
+
+    </footer>
+    <script src="{% static 'clocks.js' %}"></script>
+</body>
+</html>

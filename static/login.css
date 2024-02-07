@@ -1,0 +1,59 @@
+.desktop-background {
+    background-image: url('desktopBackground.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.form {
+    margin: 0 auto;
+    margin-top: 320px;
+    display: flex;
+    flex-direction: column;
+    width: 15%;
+    gap: 15px;
+    background-color: #3f4445;
+    
+    padding: 50px 30px;
+    min-width: 250px;
+}
+
+h1{
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    color: #f7f7f7;
+}
+
+input {
+    height: 35px;
+    border: 2px #9c9c9c solid;
+    border-radius: 10px;
+    padding: 0 20px;
+    background-color: #c6c6c6;
+
+}
+input:hover{
+    border: 2px solid #646464;
+}
+
+.submit-button{
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    height: 40px;
+    border: none;
+    background-color: #1da220;
+    border-radius: 10px;
+    color: #ffffff;
+    margin-top: 20px;
+    text-transform: uppercase;
+}
+.submit-button:hover{
+    background-color: #25bb27;
+    cursor: pointer; 
+}

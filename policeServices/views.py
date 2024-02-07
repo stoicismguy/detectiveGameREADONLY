@@ -10,5 +10,5 @@ def main_view(request):
     return render(request, "base.html")
 
 
-def search_View(request):
+def search_view(request):
     return HttpResponse("asdggfgdfgdfgdfg")

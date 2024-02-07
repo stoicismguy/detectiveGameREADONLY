@@ -8,3 +8,7 @@ from django.contrib.auth.decorators import login_required
 # @login_required(login_url='/sex/')
 def main_view(request):
     return render(request, "base.html")
+
+
+def search_View(request):
+    return HttpResponse("asdggfgdfgdfgdfg")

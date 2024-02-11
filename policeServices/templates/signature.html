@@ -1,0 +1,119 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>База данных</title>
+    <link rel="stylesheet" href="{% static 'signature_police.css' %}">
+    <link href="https://db.onlinewebfonts.com/c/061b39e95e1a0bd25e8d294af8596b2a?family=Font+Awesome+5+Free+Regular" rel="stylesheet">
+    
+</head>
+<body>
+    <header>
+        <div>
+            <video autoplay loop muted class="bgvideo" id="bgvideo">
+<!--                <source src="{% static 'matrix.mp4' %}" type="video/mp4">-->
+                </video>
+            <img src="{% static 'database.png' %}" class="mainName" height="600">
+        </div>
+    </header>
+    <main>
+        <div class="slug">
+            <div class="slug__content">
+                <i class="fas fa-caret-right"></i>
+                <span class="ttu"> СИГНАТУРЫ</span>
+          </div>
+        </div>
+        <div class="BackWalper">
+            <div class="mainBack"></div>
+            <img src="{% static 'vline_bottom.png' %}" class="vlineRight">
+            <img src="{% static 'vline.png' %}" class="vlineLeft">
+            <img src="{% static 'decoration_fingerprint.png' %}" class="fingerprint">
+            <img src="{% static 'codePattern.png' %}" class="codeMatrixLeft">
+            <img src="{% static 'codePattern.png' %}" class="codeMatrixRight">
+        </div>
+        <div class="wrapper relative">
+            <nav class="main-sidebar">
+                <a href="{% url 'policeServices:database' %}" class="main-sidebar__link">
+                    <div class="flex flex-row items-center"><img src="https://antaresdatabase.com/images/ico_database.svg" class="mr2" style="width: 25px;"> <span class="truncate">БАЗА ДАННЫХ</span></div>
+                </a>
+                <div class="dn db-l main-sidebar__spacer"></div>
+                <a href="{% url 'policeServices:database' %}?input=name" class="dn db-l main-sidebar__sublink">
+                    <div class="flex flex-row items-center"><span class="truncate">ЛИЧНЫЕ ДЕЛА</span></div>
+                </a>
+                <div class="dn db-l main-sidebar__spacer"></div>
+                <a href="{% url 'policeServices:database' %}?input=files" class="dn db-l main-sidebar__sublink">
+                    <div class="flex flex-row items-center"><span class="truncate">ФАЙЛЫ</span></div>
+                </a>
+                <div class="dn db-l main-sidebar__spacer"></div>
+                <a href="{% url 'policeServices:database' %}?input=questioning" class="dn db-l main-sidebar__sublink">
+                    <div class="flex flex-row items-center"><span class="truncate">ДОПРОС</span></div>
+                </a>
+                <div class="dn db-l main-sidebar__spacer"></div>
+                <a href="{% url 'policeServices:database' %}?input=other" class="dn db-l main-sidebar__sublink">
+                    <div class="flex flex-row items-center"><span class="truncate">ПРОЧЕЕ</span></div>
+                </a>
+                <div class="main-sidebar__spacer"></div>
+                <a href="{% url 'policeServices:signatures' %}" class="main-sidebar__link main-sidebar__link--active">
+                    <div class="flex flex-row items-center"><img src="https://antaresdatabase.com/images/ico_signatures.svg" class="mr2" style="width: 25px;"> <span class="truncate">Сигнатуры</span></div>
+                </a>
+                <div class="dn db-l main-sidebar__spacer"></div>
+                <a href="{% url 'policeServices:signatures' %}?input=sd" class="dn db-l main-sidebar__sublink">
+                    <div class="flex flex-row items-center"><span class="truncate">СД</span></div>
+                </a>
+                <div class="dn db-l main-sidebar__spacer"></div>
+                <a href="{% url 'policeServices:signatures' %}?input=sdnk" class="dn db-l main-sidebar__sublink">
+                    <div class="flex flex-row items-center"><span class="truncate">СДНК</span></div>
+                </a>
+                <div class="dn db-l main-sidebar__spacer"></div>
+                <a href="{% url 'policeServices:signatures' %}?input=sm" class="dn db-l main-sidebar__sublink">
+                    <div class="flex flex-row items-center"><span class="truncate">СМ</span></div>
+                </a>
+                <div class="main-sidebar__spacer mt3-ns"></div>
+                <a href="https://antaresdatabase.com/final-questions" class="main-sidebar__link ">
+                    <div class="flex flex-row items-center"><img src="https://antaresdatabase.com/images/ico_report.svg" class="mr2" style="width: 25px;"> <span class="truncate">Итоговый отчет</span></div>
+                </a>
+            </nav>
+            <div class="main-content">
+                <div class="panel panel--default mt4 pa4 w-100 w-80-l">
+                    <form method="POST" action="https://antaresdatabase.com/traces"><input type="hidden" name="_token" value="Ora2rbsSAGTf0o7gUSkM9vpUNhzs8PtnX3D0L6w5">
+                        <div class="flex flex-column"><input type="hidden" name="_token" value="Ora2rbsSAGTf0o7gUSkM9vpUNhzs8PtnX3D0L6w5">
+                            <div class="flex flex-column flex-row-ns">
+                                <div class="flex flex-column w-100 w-50-ns mr3"><span>
+              Сигнатура
+            </span> <input id="signature" type="signature" name="signature" value="" required="required" autofocus="autofocus" class="w-100 ba pa1 mt2"></div>
+                                <div class="flex flex-column w-100 w-50-ns"><span>
+              Описание
+            </span> <input id="description" type="description" name="description" class="w-100 ba pa1 mt2"></div>
+                            </div> <button type="submit" class="button-reset white bn an-button pointer ph4 self-center mt4 ttu">
+          Добавить и сравнить
+        </button></div>
+                    </form>
+                </div>
+                <div class="mt5">
+                    <div class="tabs-container mt4 flex flex-row justify-between w-100 an-bg-blue">
+                        <a href="#" class="tab w-33 tc b pv2 ph3 ttu {% if input_selected == "sd" or input_selected is None %}tab-active{% endif %}"><span class="dn dib-ns"><i class="fas fa-caret-right"></i> отпечатки пальцев&nbsp;</span>(СД)</a>
+                        <a href="#" class="tab w-33 tc b pv2 ph3 ttu {% if input_selected == "sdnk" %}tab-active{% endif %}"><span class="dn dib-ns"><i class="fas fa-caret-right"></i> днк&nbsp;</span>(СДНК)</a>
+                        <a href="#" class="tab w-33 tc b pv2 ph3 ttu {% if input_selected == "sm" %}tab-active{% endif %}"><span class="dn dib-ns"><i class="fas fa-caret-right"></i> материалы&nbsp;</span>(СМ)</a>
+                    </div>
+                    <div class="panel panel--default pv4 w-100 mt1">
+                        <div class="traces-table-wrapper">
+                            <table class="traces-table">
+                                <thead>
+                                    <tr>
+                                        <th>Описание</th>
+                                        <th>Сигнатура</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="{% static 'huskript.js' %}"></script>
+</body>
+</html>

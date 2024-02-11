@@ -6,8 +6,16 @@ from django.contrib.auth.decorators import login_required
 
 
 # @login_required(login_url='/sex/')
-def main_view(request):
-    return render(request, "base.html")
+def database_view(request):
+    input_selected = request.GET.get("input")
+    context = {"input_selected": input_selected}
+    return render(request, "base.html", context=context)
+
+
+def signature_view(request):
+    input_selected = request.GET.get("input")
+    context = {"input_selected": input_selected}
+    return render(request, "signature.html", context=context)
 
 
 def search_view(request):

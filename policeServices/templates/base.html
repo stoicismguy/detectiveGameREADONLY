@@ -4,13 +4,133 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'police.css' %}">
     <title>База данных</title>
+    <link rel="stylesheet" href="{% static 'base_police.css' %}">
+    <link href="https://db.onlinewebfonts.com/c/061b39e95e1a0bd25e8d294af8596b2a?family=Font+Awesome+5+Free+Regular" rel="stylesheet">
+    
 </head>
 <body>
+    <header>
+        <div>
+            <video autoplay loop muted class="bgvideo" id="bgvideo">
+<!--                <source src="{% static 'matrix.mp4' %}" type="video/mp4">-->
+                </video>
+            <img src="{% static 'database.png' %}" class="mainName" height="600">
+        </div>
+    </header>
     <main>
-        <h1>ДанИл</h1>
-        <h2>kfkfk</h2>
+        <div class="slug">
+            <div class="slug__content">
+                <i class="fas fa-caret-right"></i>
+                <span class="ttu">🢖 БАЗА ДАННЫХ</span>
+          </div>
+        </div>
+        <div class="BackWalper">
+            <div class="mainBack"></div>
+            <img src="{% static 'vline_bottom.png' %}" class="vlineRight">
+            <img src="{% static 'vline.png' %}" class="vlineLeft">
+            <img src = "{% static 'decoration_fingerprint.png' %}" class="fingerprint">
+            <img src = "{% static 'codePattern.png' %}" class="codeMatrixLeft">
+            <img src = "{% static 'codePattern.png' %}" class="codeMatrixRight">
+        </div>
+        <div class="wrapper relative">
+            <nav class="main-sidebar">
+                <a href="{% url 'policeServices:database' %}" class="main-sidebar__link main-sidebar__link--active">
+                    <div class="flex flex-row items-center"><img src="https://antaresdatabase.com/images/ico_database.svg" class="mr2" style="width: 25px;"> <span class="truncate">БАЗА ДАННЫХ</span></div>
+                </a>
+                <div class="dn db-l main-sidebar__spacer"></div>
+                <a href="{% url 'policeServices:database' %}?input=name" class="dn db-l main-sidebar__sublink">
+                    <div class="flex flex-row items-center"><span class="truncate">ЛИЧНЫЕ ДЕЛА</span></div>
+                </a>
+                <div class="dn db-l main-sidebar__spacer"></div>
+                <a href="{% url 'policeServices:database' %}?input=files" class="dn db-l main-sidebar__sublink">
+                    <div class="flex flex-row items-center"><span class="truncate">ФАЙЛЫ</span></div>
+                </a>
+                <div class="dn db-l main-sidebar__spacer"></div>
+                <a href="{% url 'policeServices:database' %}?input=questioning" class="dn db-l main-sidebar__sublink">
+                    <div class="flex flex-row items-center"><span class="truncate">ДОПРОС</span></div>
+                </a>
+                <div class="dn db-l main-sidebar__spacer"></div>
+                <a href="{% url 'policeServices:database' %}?input=other" class="dn db-l main-sidebar__sublink">
+                    <div class="flex flex-row items-center"><span class="truncate">ПРОЧЕЕ</span></div>
+                </a>
+                <div class="main-sidebar__spacer"></div>
+                <a href="{% url 'policeServices:signatures' %}" class="main-sidebar__link ">
+                    <div class="flex flex-row items-center"><img src="https://antaresdatabase.com/images/ico_signatures.svg" class="mr2" style="width: 25px;"> <span class="truncate">Сигнатуры</span></div>
+                </a>
+                <div class="dn db-l main-sidebar__spacer"></div>
+                <a href="{% url 'policeServices:signatures' %}?input=sd" class="dn db-l main-sidebar__sublink">
+                    <div class="flex flex-row items-center"><span class="truncate">СД</span></div>
+                </a>
+                <div class="dn db-l main-sidebar__spacer"></div>
+                <a href="{% url 'policeServices:signatures' %}?input=sdnk" class="dn db-l main-sidebar__sublink">
+                    <div class="flex flex-row items-center"><span class="truncate">СДНК</span></div>
+                </a>
+                <div class="dn db-l main-sidebar__spacer"></div>
+                <a href="{% url 'policeServices:signatures' %}?input=sm" class="dn db-l main-sidebar__sublink">
+                    <div class="flex flex-row items-center"><span class="truncate">СМ</span></div>
+                </a>
+                <div class="main-sidebar__spacer mt3-ns"></div>
+                <a href="" class="main-sidebar__link ">
+                    <div class="flex flex-row items-center"><img src="https://antaresdatabase.com/images/ico_report.svg" class="mr2" style="width: 25px;"> <span class="truncate">Итоговый отчет</span></div>
+                </a>
+            </nav>
+            <div class="main-content">
+                <div class="panel panel--default mt4 pv4 ph2 ph5-ns dib w-100 w-80-l">
+                    <form method="POST" action="">
+                        {% csrf_token %}
+                        <table class="w-100">
+                            <tbody>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td><span>Введите полное название</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="pt2"><select name="prefix" class="an-dropdown">
+                                        <option value="names" {% if input_selected == "name" or input_selected is None %}selected="selected"{% endif %}>ИМЯ</option>
+                                        <option value="file" {% if input_selected == "files" %}selected="selected"{% endif %}>ФАЙЛ</option>
+                                        <option value="questioning" {% if input_selected == "questioning" %}selected="selected"{% endif %}>ДОПРОС</option>
+                                        <option value="other" {% if input_selected == "other" %}selected="selected"{% endif %} >ПРОЧЕЕ</option></select></td>
+                                    <td class="pt2 ph2 b ml0"> @</td>
+                                    <td class="pt2 w-100-l"><input name="gid" required="required" class="w-100 ba pa1"></td>
+                                </tr>
+                                <tr>
+                                    <td class="pt4"></td>
+                                    <td class="pt4"></td>
+                                    <td class="pt4"><button type="submit" class="button-reset white bn an-button pointer ph4 ttu">Искать</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </form>
+                </div>
+                <div class="mt4">
+                    <div class="cf nl2 nr2">
+                        <div class="fl pa2 w-100 w-50-l">
+                            <div class="panel panel--default pa4 flex flex-column">
+                                <div class="flex flex-row w-100 items-center">
+                                    <div class="an-bg-gray w1" style="height: 1px;"></div>
+                                    <div class="an-color-gray ph2">предыдущие запросы: ИМЕНА</div>
+                                    <div class="an-bg-gray flex-auto" style="height: 1px;"></div>
+                                </div>
+                                <div class="an-bg-gray" style="height: 1px;"></div>
+                            </div>
+                        </div>
+                        <div class="fl pa2 w-100 w-50-l">
+                            <div class="panel panel--default pa4">
+                                <div class="flex flex-row w-100 items-center">
+                                    <div class="an-bg-gray w1" style="height: 1px;"></div>
+                                    <div class="an-color-gray ph2">предыдущие запросы: ФАЙЛЫ</div>
+                                    <div class="an-bg-gray flex-auto" style="height: 1px;"></div>
+                                </div>
+                                <div class="an-bg-gray" style="height: 1px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
+    <script src="{% static 'huskript.js' %}"></script>
 </body>
 </html>
